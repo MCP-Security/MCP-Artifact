@@ -1,0 +1,1003 @@
+{
+    "time": {
+        "title": "Time MCP Server",
+        "url": "https://storage.mcp-servers.shop/time-mcp-server.zip",
+        "description": "A Model Context Protocol server that provides time and timezone conversion capabilities. This server enables LLMs to get current time information and perform timezone conversions using IANA timezone names, with automatic system timezone detection.",
+        "availableTools": [
+            {
+                "name": "get_current_time",
+                "description": "Get current time in a specific timezone or system timezone.",
+                "requiredArguments": [
+                    {
+                        "name": "timezone",
+                        "type": "string",
+                        "details": "IANA timezone name (e.g., 'America/New_York', 'Europe/London')"
+                    }
+                ]
+            },
+            {
+                "name": "convert_time",
+                "description": "Convert time between timezones.",
+                "requiredArguments": []
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "time": {
+                    "command": "npm",
+                    "args": [
+                        "run",
+                        "path/to/time"
+                    ]
+                }
+            }
+        }
+    },
+    "github": {
+        "title": "Github MCP Server",
+        "url": "https://storage.mcp-servers.shop/github-mcp-server-main.zip",
+        "description": "The GitHub MCP Server is a Model Context Protocol (MCP) server that provides seamless integration with GitHub APIs, enabling advanced automation and interaction capabilities for developers and tools. Automating GitHub workflows and processes. Extracting and analyzing data from GitHub repositories. Building AI powered tools and applications that interact with GitHub's ecosystem. To run the server in a container, you will need to have Docker installed. Once Docker is installed, you will also need to ensure Docker is running. The image is public; if you get errors on pull, you may have an expired token and need to docker logout ghcr.io. Lastly you will need to Create a GitHub Personal Access Token. The MCP server can use many of the GitHub APIs, so enable the permissions that you feel comfortable granting your AI tools (to learn more about access tokens, please check out the documentation).",
+        "availableTools": [
+            {
+                "name": "get_me",
+                "description": "Get details of the authenticated user",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_issue",
+                "description": "Gets the contents of an issue within a repository",
+                "requiredArguments": [
+                    {
+                        "name": "owner",
+                        "type": "string",
+                        "details": "Repository owner"
+                    },
+                    {
+                        "name": "repo",
+                        "type": "string",
+                        "details": "Repository name"
+                    },
+                    {
+                        "name": "issue_number",
+                        "type": "number",
+                        "details": "Issue number"
+                    }
+                ]
+            },
+            {
+                "name": "get_issue_comments",
+                "description": "Get comments for a GitHub issue",
+                "requiredArguments": [
+                    {
+                        "name": "owner",
+                        "type": "string",
+                        "details": "Repository owner"
+                    },
+                    {
+                        "name": "repo",
+                        "type": "string",
+                        "details": "Repository name"
+                    },
+                    {
+                        "name": "issue_number",
+                        "type": "number",
+                        "details": "Issue number"
+                    }
+                ]
+            },
+            {
+                "name": "create_issue",
+                "description": "Create a new issue in a GitHub repository",
+                "requiredArguments": [
+                    {
+                        "name": "owner",
+                        "type": "string",
+                        "details": "Repository owner"
+                    },
+                    {
+                        "name": "repo",
+                        "type": "string",
+                        "details": "Repository name"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string",
+                        "details": "Issue title"
+                    },
+                    {
+                        "name": "body",
+                        "type": "string",
+                        "details": "Issue body content (optional)"
+                    },
+                    {
+                        "name": "assignees",
+                        "type": "array",
+                        "items": "string",
+                        "details": "Usernames to assign to this issue (optional)"
+                    },
+                    {
+                        "name": "labels",
+                        "type": "array",
+                        "items": "string",
+                        "details": "Labels to apply to this issue (optional)"
+                    }
+                ]
+            },
+            {
+                "name": "add_issue_comment",
+                "description": "Add a comment to an issue",
+                "requiredArguments": [
+                    {
+                        "name": "owner",
+                        "type": "string",
+                        "details": "Repository owner"
+                    },
+                    {
+                        "name": "repo",
+                        "type": "string",
+                        "details": "Repository name"
+                    },
+                    {
+                        "name": "issue_number",
+                        "type": "number",
+                        "details": "Issue number"
+                    },
+                    {
+                        "name": "body",
+                        "type": "string",
+                        "details": "Comment text"
+                    }
+                ]
+            },
+            {
+                "name": "list_issues",
+                "description": "List and filter repository issues",
+                "requiredArguments": [
+                    {
+                        "name": "owner",
+                        "type": "string",
+                        "details": "Repository owner"
+                    },
+                    {
+                        "name": "repo",
+                        "type": "string",
+                        "details": "Repository name"
+                    },
+                    {
+                        "name": "state",
+                        "type": "string",
+                        "details": "Filter by state ('open', 'closed', 'all') (optional)"
+                    },
+                    {
+                        "name": "labels",
+                        "type": "array",
+                        "items": "string",
+                        "details": "Labels to filter by (optional)"
+                    },
+                    {
+                        "name": "sort",
+                        "type": "string",
+                        "details": "Sort by ('created', 'updated', 'comments') (optional)"
+                    },
+                    {
+                        "name": "direction",
+                        "type": "string",
+                        "details": "Sort direction ('asc', 'desc') (optional)"
+                    },
+                    {
+                        "name": "since",
+                        "type": "string",
+                        "details": "Filter by date (ISO 8601 timestamp) (optional)"
+                    },
+                    {
+                        "name": "page",
+                        "type": "number",
+                        "details": "Page number (optional)"
+                    },
+                    {
+                        "name": "perPage",
+                        "type": "number",
+                        "details": "Results per page (optional)"
+                    }
+                ]
+            },
+            {
+                "name": "update_issue",
+                "description": "Update an existing issue in a GitHub repository",
+                "requiredArguments": [
+                    {
+                        "name": "owner",
+                        "type": "string",
+                        "details": "Repository owner"
+                    },
+                    {
+                        "name": "repo",
+                        "type": "string",
+                        "details": "Repository name"
+                    },
+                    {
+                        "name": "issue_number",
+                        "type": "number",
+                        "details": "Issue number to update"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string",
+                        "details": "New title (optional)"
+                    },
+                    {
+                        "name": "body",
+                        "type": "string",
+                        "details": "New description (optional)"
+                    },
+                    {
+                        "name": "state",
+                        "type": "string",
+                        "details": "New state ('open' or 'closed') (optional)"
+                    },
+                    {
+                        "name": "labels",
+                        "type": "array",
+                        "items": "string",
+                        "details": "New labels (optional)"
+                    },
+                    {
+                        "name": "assignees",
+                        "type": "array",
+                        "items": "string",
+                        "details": "New assignees (optional)"
+                    },
+                    {
+                        "name": "milestone",
+                        "type": "number",
+                        "details": "New milestone number (optional)"
+                    }
+                ]
+            },
+            {
+                "name": "search_issues",
+                "description": "Search for issues and pull requests",
+                "requiredArguments": [
+                    {
+                        "name": "query",
+                        "type": "string",
+                        "details": "Search query"
+                    },
+                    {
+                        "name": "sort",
+                        "type": "string",
+                        "details": "Sort field (optional)"
+                    },
+                    {
+                        "name": "order",
+                        "type": "string",
+                        "details": "Sort order (optional)"
+                    },
+                    {
+                        "name": "page",
+                        "type": "number",
+                        "details": "Page number (optional)"
+                    },
+                    {
+                        "name": "perPage",
+                        "type": "number",
+                        "details": "Results per page (optional)"
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "github": {
+                    "command": "docker",
+                    "args": [
+                        "run",
+                        "-i",
+                        "--rm",
+                        "-e",
+                        "GITHUB_PERSONAL_ACCESS_TOKEN",
+                        "path/to/github-mcp-server"
+                    ],
+                    "env": {
+                        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
+                    }
+                }
+            }
+        }
+    },
+    "mcp-apple-notes": {
+        "title": "MCP Apple Notes MCP Server",
+        "url": "https://storage.mcp-servers.shop/mcp-apple-notes-main.zip",
+        "description": "A MCP server that enables semantic search and RAG (Retrieval Augmented Generation) over your Apple Notes. This allows AI assistants like Claude to search and reference your Apple Notes during conversations. 🔍 Semantic search over Apple Notes using all-MiniLM-L6-v2 on-device embeddings model 📝 Full-text search capabilities 📊 Vector storage using LanceDB 🤖 MCP-compatible server for AI assistant integration 🍎 Native Apple Notes integration via JXA 🏃‍♂️ Fully local execution - no API keys needed",
+        "availableTools": [
+            {
+                "name": "generic_operation",
+                "description": "None",
+                "requiredArguments": []
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "local-machine": {
+                    "command": "/Users/<YOUR_USER_NAME>/.bun/bin/bun",
+                    "args": [
+                        "/Users/<YOUR_USER_NAME>/apple-notes-mcp/index.ts"
+                    ]
+                }
+            }
+        }
+    },
+    "amap-maps": {
+        "title": "Amap Maps MCP Server",
+        "url": "https://storage.mcp-servers.shop/amap-mcp-server-main.zip",
+        "description": "高德地图官方 MCP Server，支持任意 MCP 协议的客户端（如：Cursor、Claude、Cline）可方便使用高德地图 MCP server。配置以 Cursor 平台为例",
+        "availableTools": [
+            {
+                "name": "maps_regeocode",
+                "description": "将一个高德经纬度坐标转换为行政区划地址信息",
+                "requiredArguments": [
+                    {
+                        "name": "location",
+                        "type": "string",
+                        "details": "经纬度坐标，格式：经度,纬度"
+                    }
+                ]
+            },
+            {
+                "name": "maps_geo",
+                "description": "将详细的结构化地址转换为经纬度坐标。支持对地标性名胜景区、建筑物名称解析为经纬度坐标",
+                "requiredArguments": [
+                    {
+                        "name": "address",
+                        "type": "string",
+                        "details": "结构化地址"
+                    },
+                    {
+                        "name": "city",
+                        "type": "string",
+                        "details": "指定查询的城市（可选）"
+                    }
+                ]
+            },
+            {
+                "name": "maps_ip_location",
+                "description": "IP定位，根据用户输入的IP地址，定位IP的所在位置",
+                "requiredArguments": [
+                    {
+                        "name": "ip",
+                        "type": "string",
+                        "details": "IP地址"
+                    }
+                ]
+            },
+            {
+                "name": "maps_weather",
+                "description": "根据城市名称或者标准adcode查询指定城市的天气",
+                "requiredArguments": [
+                    {
+                        "name": "city",
+                        "type": "string",
+                        "details": "城市名称或者adcode"
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "amap-maps": {
+                    "command": "npm",
+                    "args": [
+                        "run",
+                        "-y",
+                        "amap-maps-mcp-server"
+                    ],
+                    "env": {
+                        "AMAP_MAPS_API_KEY": "api_key"
+                    }
+                }
+            }
+        }
+    },
+    "playwright-mcp": {
+        "title": "Playwright MCP MCP Server",
+        "url": "https://storage.mcp-servers.shop/playwright-mcp-main.zip",
+        "description": "A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright. This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models. Key Features Fast and lightweight. Uses Playwright's accessibility tree, not pixel-based input. LLM-friendly. No vision models needed, operates purely on structured data. Deterministic tool application. Avoids ambiguity common with screenshot-based approaches. Requirements Node.js 18 or newer VS Code, Cursor, Windsurf, Claude Desktop or any other MCP client",
+        "availableTools": [
+            {
+                "name": "browser_snapshot",
+                "description": "Capture accessibility snapshot of the current page, this is better than screenshot",
+                "requiredArguments": [],
+                "readOnly": true
+            },
+            {
+                "name": "browser_click",
+                "description": "Perform click on a web page",
+                "requiredArguments": [
+                    {
+                        "name": "element",
+                        "type": "string",
+                        "details": "Human-readable element description used to obtain permission to interact with the element"
+                    },
+                    {
+                        "name": "ref",
+                        "type": "string",
+                        "details": "Exact target element reference from the page snapshot"
+                    }
+                ],
+                "readOnly": false
+            },
+            {
+                "name": "browser_drag",
+                "description": "Perform drag and drop between two elements",
+                "requiredArguments": [
+                    {
+                        "name": "startElement",
+                        "type": "string",
+                        "details": "Human-readable source element description used to obtain the permission to interact with the element"
+                    },
+                    {
+                        "name": "startRef",
+                        "type": "string",
+                        "details": "Exact source element reference from the page snapshot"
+                    },
+                    {
+                        "name": "endElement",
+                        "type": "string",
+                        "details": "Human-readable target element description used to obtain the permission to interact with the element"
+                    },
+                    {
+                        "name": "endRef",
+                        "type": "string",
+                        "details": "Exact target element reference from the page snapshot"
+                    }
+                ],
+                "readOnly": false
+            },
+            {
+                "name": "browser_hover",
+                "description": "Hover over element on page",
+                "requiredArguments": [
+                    {
+                        "name": "element",
+                        "type": "string",
+                        "details": "Human-readable element description used to obtain permission to interact with the element"
+                    },
+                    {
+                        "name": "ref",
+                        "type": "string",
+                        "details": "Exact target element reference from the page snapshot"
+                    }
+                ],
+                "readOnly": true
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "playwright": {
+                    "command": "npm",
+                    "args": [
+                        "run",
+                        "path/to/playwright/mcp"
+                    ]
+                }
+            }
+        }
+    },
+    "google-maps": {
+        "title": "Google Maps MCP Server",
+        "url": "https://storage.mcp-servers.shop/google-maps-main.zip",
+        "description": "Google Maps is a location services API that provides directions, place details, and geographic data to enhance applications with mapping functionalities. MCP Server for the Google Maps API.",
+        "availableTools": [
+            {
+                "name": "maps_geocode",
+                "description": "Convert address to coordinates",
+                "requiredArguments": [
+                    {
+                        "name": "address",
+                        "type": "string",
+                        "details": "The address to geocode"
+                    }
+                ]
+            },
+            {
+                "name": "maps_reverse_geocode",
+                "description": "Convert coordinates to address",
+                "requiredArguments": [
+                    {
+                        "name": "latitude",
+                        "type": "number",
+                        "details": "Latitude of the location"
+                    },
+                    {
+                        "name": "longitude",
+                        "type": "number",
+                        "details": "Longitude of the location"
+                    }
+                ]
+            },
+            {
+                "name": "maps_search_places",
+                "description": "Search for places using text query",
+                "requiredArguments": [
+                    {
+                        "name": "query",
+                        "type": "string",
+                        "details": "Text query for searching places"
+                    },
+                    {
+                        "name": "location",
+                        "type": "object",
+                        "details": "Optional. Location to bias results",
+                        "optional": true,
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {
+                        "name": "radius",
+                        "type": "number",
+                        "details": "Optional. Search radius in meters (max 50000)",
+                        "optional": true
+                    }
+                ]
+            },
+            {
+                "name": "maps_place_details",
+                "description": "Get detailed information about a place",
+                "requiredArguments": [
+                    {
+                        "name": "place_id",
+                        "type": "string",
+                        "details": "The place ID to get details for"
+                    }
+                ]
+            },
+            {
+                "name": "maps_distance_matrix",
+                "description": "Calculate distances and times between points",
+                "requiredArguments": [
+                    {
+                        "name": "origins",
+                        "type": "array",
+                        "items": "string",
+                        "details": "Array of origin addresses or place IDs"
+                    },
+                    {
+                        "name": "destinations",
+                        "type": "array",
+                        "items": "string",
+                        "details": "Array of destination addresses or place IDs"
+                    },
+                    {
+                        "name": "mode",
+                        "type": "string",
+                        "details": "Optional. Travel mode: driving, walking, bicycling, or transit",
+                        "optional": true
+                    }
+                ]
+            },
+            {
+                "name": "maps_elevation",
+                "description": "Get elevation data for locations",
+                "requiredArguments": [
+                    {
+                        "name": "locations",
+                        "type": "array",
+                        "items": "object",
+                        "details": "Array of locations with latitude and longitude",
+                        "properties": {
+                            "latitude": {
+                                "type": "number"
+                            },
+                            "longitude": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "maps_directions",
+                "description": "Get directions between points",
+                "requiredArguments": [
+                    {
+                        "name": "origin",
+                        "type": "string",
+                        "details": "Origin address or place ID"
+                    },
+                    {
+                        "name": "destination",
+                        "type": "string",
+                        "details": "Destination address or place ID"
+                    },
+                    {
+                        "name": "mode",
+                        "type": "string",
+                        "details": "Optional. Travel mode: driving, walking, bicycling, or transit",
+                        "optional": true
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "google-maps": {
+                    "command": "docker",
+                    "args": [
+                        "run",
+                        "-i",
+                        "--rm",
+                        "-e",
+                        "GOOGLE_MAPS_API_KEY",
+                        "mcp/google-maps"
+                    ],
+                    "env": {
+                        "GOOGLE_MAPS_API_KEY": "<YOUR_API_KEY>"
+                    }
+                }
+            }
+        }
+    },
+    "weather-mcp-server": {
+        "title": "Weather MCP Server MCP Server",
+        "url": "https://storage.mcp-servers.shop/mcp-weather-server-main.zip",
+        "description": "Weather MCP Server is a Python-based server application designed to provide weather data and forecasts.",
+        "availableTools": [
+            {
+                "name": "current_weather",
+                "description": "Gets the current weather for a city",
+                "requiredArguments": [
+                    {
+                        "name": "city",
+                        "type": "string",
+                        "details": "The name of the city to get the weather for"
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "weather-mcp-server": {
+                    "command": "uv",
+                    "args": [
+                        "run",
+                        "--directory",
+                        "path/to/weather-mcp"
+                    ]
+                }
+            }
+        }
+    },
+    "tavily-mcp": {
+        "title": "TavilyMCP",
+        "url": "https://storage.mcp-servers.shop/tavily-mcp-main.zip",
+        "description": "The Model Context Protocol (MCP) is an open standard that enables AI systems to interact seamlessly with various data sources and tools, facilitating secure, two-way connections. Developed by Anthropic, the Model Context Protocol (MCP) enables AI assistants like Claude to seamlessly integrate with Tavily's advanced search and data extraction capabilities. This integration provides AI models with real-time access to web information, complete with sophisticated filtering options and domain-specific search features. The Tavily MCP server provides: search, extract, map, crawl tools Real-time web search capabilities through the tavily-search tool Intelligent data extraction from web pages via the tavily-extract tool Powerful web mapping tool that creates a structured map of website Web crawler that systematically explores websites",
+        "availableTools": [
+            {
+                "name": "tavily-search",
+                "description": "A powerful web search tool that provides comprehensive, real-time results using Tavily's AI search engine. Returns relevant web content with customizable parameters for result count, content type, and domain filtering. Ideal for gathering current information, news, and detailed web content analysis.",
+                "requiredArguments": [
+                    {
+                        "name": "query",
+                        "type": "string",
+                        "details": "The search query to execute."
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "tavily": {
+                    "command": "npm",
+                    "args": [
+                        "run",
+                        "/path/to/tavily-mcp/build/index.js"
+                    ],
+                    "env": {
+                        "TAVILY_API_KEY": "your-api-key-here"
+                    }
+                }
+            }
+        }
+    },
+    "whatsapp-mcp-server": {
+        "title": "WhatsApp MCP Server MCP Server",
+        "url": "https://storage.mcp-servers.shop/whatsapp-mcp-main.zip",
+        "description": "This is a Model Context Protocol (MCP) server for WhatsApp.\n\nWith this you can search and read your personal Whatsapp messages (including images, videos, documents, and audio messages), search your contacts and send messages to either individuals or groups. You can also send media files including images, videos, documents, and audio messages.\n\nIt connects to your personal WhatsApp account directly via the Whatsapp web multidevice API (using the whatsmeow library). All your messages are stored locally in a SQLite database and only sent to an LLM (such as Claude) when the agent accesses them through tools (which you control).\nHere's an example of what you can do when it's connected to Claude.",
+        "availableTools": [
+            {
+                "name": "search_contacts",
+                "description": "Search for contacts by name or phone number",
+                "requiredArguments": []
+            },
+            {
+                "name": "list_messages",
+                "description": "Retrieve messages with optional filters and context",
+                "requiredArguments": []
+            },
+            {
+                "name": "list_chats",
+                "description": "List available chats with metadata",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_chat",
+                "description": "Get information about a specific chat",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_direct_chat_by_contact",
+                "description": "Find a direct chat with a specific contact",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_contact_chats",
+                "description": "List all chats involving a specific contact",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_last_interaction",
+                "description": "Get the most recent message with a contact",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_message_context",
+                "description": "Retrieve context around a specific message",
+                "requiredArguments": []
+            },
+            {
+                "name": "send_message",
+                "description": "Send a WhatsApp message to a specified phone number or group JID",
+                "requiredArguments": []
+            },
+            {
+                "name": "send_file",
+                "description": "Send a file (image, video, raw audio, document) to a specified recipient",
+                "requiredArguments": []
+            },
+            {
+                "name": "send_audio_message",
+                "description": "Send an audio file as a WhatsApp voice message (requires the file to be an .ogg opus file or ffmpeg must be installed)",
+                "requiredArguments": []
+            },
+            {
+                "name": "download_media",
+                "description": "Download media from a WhatsApp message and get the local file path",
+                "requiredArguments": []
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "whatsapp": {
+                    "command": "{{PATH_TO_UV}}",
+                    "args": [
+                        "--directory",
+                        "{{PATH_TO_SRC}}/whatsapp-mcp/whatsapp-mcp-server",
+                        "run",
+                        "main.py"
+                    ]
+                }
+            }
+        }
+    },
+    "telegram-ai-assistant-bot": {
+        "title": "Telegram AI Assistant Bot MCP Server",
+        "url": "https://storage.mcp-servers.shop/Telegram-AI-MCP-Assistant-Bot-main.zip",
+        "description": "The Telegram AI Assistant Bot is a reasoning-driven AI agent, named Cortex-R, designed to interact with users via Telegram. It uses multiple Model Context Protocol (MCP) servers to perform various tasks such as web searches, document processing, mathematical calculations, and Google services integration (e.g., Gmail and Google Sheets). The bot employs both stdio and sse transport protocols to communicate with these MCP servers. Telegram Integration: The bot interacts with users through Telegram, responding to their queries and tasks. Multi-MCP Server Support: Utilizes multiple MCP servers for diverse functionalities. Gmail integration for email management. Google Sheets integration for spreadsheet operations. Web search capabilities using DuckDuckGo. Document processing and semantic search. Mathematical calculations. Dynamic Tool Discovery: Automatically discovers tools from MCP servers during initialization. Customizable Agent Strategy: Supports different strategies like conservative, retry-once, and explore-all. Memory Management: Retrieves and stores memory items to enhance task-solving capabilities. Configurable Persona: Allows customization of tone, verbosity, and behavior. The bot is built using the following components: 1. Telegram Bot Integration The bot is implemented in telegram_agent.py using the python-telegram-bot library. It handles user messages and commands such as /start and /help. User queries are processed by the Cortex-R agent. 2. Core Components Agent Loop (core/loop.py): Manages the main execution loop of the agent, including perception, planning, and tool execution. Session Management (core/session.py): Handles communication with multiple MCP servers using stdio and sse transport protocols. Strategy (core/strategy.py): Implements planning strategies for decision-making. 3. MCP Servers The bot interacts with the following MCP servers: Gmail Server (gmail_server.py): Manages email operations such as sending, reading, and trashing emails. Google Sheets Server (mcp_gdrive_server.py): Handles spreadsheet operations like creating, updating, and sharing Google Sheets. Web Search Server (mcp_server_3.py): Performs web searches using DuckDuckGo and fetches webpage content. Document Processing Server (mcp_server_2.py): Processes documents for semantic search and indexing. Math Server (mcp_server_1.py): Performs mathematical calculations.",
+        "availableTools": [
+            {
+                "name": "gmail",
+                "description": "Gmail MCP server for email operations.",
+                "requiredArguments": [
+                    {
+                        "name": "cwd",
+                        "type": "string",
+                        "details": "Path to the server directory"
+                    }
+                ]
+            },
+            {
+                "name": "gdrive",
+                "description": "Google Drive MCP server for spreadsheet operations.",
+                "requiredArguments": [
+                    {
+                        "name": "cwd",
+                        "type": "string",
+                        "details": "Path to the server directory"
+                    }
+                ]
+            },
+            {
+                "name": "math",
+                "description": "Math MCP server for mathematical calculations.",
+                "requiredArguments": [
+                    {
+                        "name": "cwd",
+                        "type": "string",
+                        "details": "Path to the server directory"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string",
+                        "details": "SSE endpoint URL"
+                    }
+                ]
+            },
+            {
+                "name": "documents",
+                "description": "Document processing MCP server for semantic search and indexing.",
+                "requiredArguments": [
+                    {
+                        "name": "cwd",
+                        "type": "string",
+                        "details": "Path to the server directory"
+                    }
+                ]
+            },
+            {
+                "name": "websearch",
+                "description": "Web search MCP server using DuckDuckGo.",
+                "requiredArguments": [
+                    {
+                        "name": "cwd",
+                        "type": "string",
+                        "details": "Path to the server directory"
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "telegram-ai-assistant-bot": {}
+            }
+        }
+    },
+    "notion-mcp-server": {
+        "title": "Notion MCP Server MCP Server",
+        "url": "https://storage.mcp-servers.shop/notion-mcp-server-main.zip",
+        "description": "Official Notion MCP Server.",
+        "availableTools": [],
+        "config": {
+            "mcpServers": {
+                "notionApi": {
+                    "command": "npm",
+                    "args": [
+                        "run",
+                        "-y",
+                        "/path/to/notion-mcp-server"
+                    ],
+                    "env": {
+                        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer ntn_****\", \"Notion-Version\": \"2022-06-28\" }"
+                    }
+                }
+            }
+        }
+    },
+    "wechat-mcp": {
+        "title": "Wechat MCP MCP Server",
+        "url": "https://storage.mcp-servers.shop/wechat-mcp-main.zip",
+        "description": "Wechat MCP, 微信MCP, 获取消息和发送消息发送文件, SQL查询 & 历史消息管理",
+        "availableTools": [
+            {
+                "name": "get_wechat_message",
+                "description": "Retrieve WeChat messages by filters like contact, group, or time range",
+                "requiredArguments": [
+                    {
+                        "name": "contact",
+                        "type": "string",
+                        "details": "Contact name or group name to filter messages by (optional)",
+                        "optional": true
+                    },
+                    {
+                        "name": "limit",
+                        "type": "number",
+                        "details": "Maximum number of messages to return (default: 20)",
+                        "optional": true
+                    },
+                    {
+                        "name": "before_time",
+                        "type": "string",
+                        "details": "Return messages before this time (ISO format, optional)",
+                        "optional": true
+                    }
+                ]
+            },
+            {
+                "name": "get_last_wechat_message",
+                "description": "Get the most recent WeChat message from a specific contact or group",
+                "requiredArguments": [
+                    {
+                        "name": "contact",
+                        "type": "string",
+                        "details": "Contact name or group name"
+                    }
+                ]
+            },
+            {
+                "name": "sql_wechat_message",
+                "description": "Execute custom SQL query on WeChat message database for advanced filtering",
+                "requiredArguments": [
+                    {
+                        "name": "query",
+                        "type": "string",
+                        "details": "SQL query to execute on the WeChat message database"
+                    }
+                ]
+            },
+            {
+                "name": "send_wechat_message",
+                "description": "Send a WeChat message to a contact or group",
+                "requiredArguments": [
+                    {
+                        "name": "to",
+                        "type": "string",
+                        "details": "Contact name or group name to send message to"
+                    },
+                    {
+                        "name": "content",
+                        "type": "string",
+                        "details": "Text content of the message to send"
+                    },
+                    {
+                        "name": "file_path",
+                        "type": "string",
+                        "details": "Path to file to send (optional)",
+                        "optional": true
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "wechat-mcp": {
+                    "command": "npx",
+                    "args": [
+                        "-y",
+                        "@modelcontextprotcol/wechat-mcp@latest"
+                    ]
+                }
+            }
+        }
+    },
+    "outlook-mail-calendar": {
+        "title": "Outlook Mail Calendar MCP Server",
+        "url": "https://storage.mcp-servers.shop/OutlookMCPServer-main.zip",
+        "description": "This MCP server gives Claude Desktop access to your Microsoft 365 mail and (soon) calendar using the Microsoft Graph API. ✨ Features ✅ Mail access: Compose, File, Delete, Search, filter, and analyze your inbox from Claude or any MCP-compatible agent (DONE) 🔜 Calendar support: List Events, Create Events, Delete Events (search and update coming soon) 🚧 OneDrive support: Possible future direction after mail and calendar are robust. Tech Stack msgraph (modern Microsoft Graph SDK) azure.identity with DeviceCodeCredential and TokenCachePersistenceOptions FastMCP — simple MCP-compliant server interface uv — fast Python dependency and env management",
+        "availableTools": [
+            {
+                "name": "get_inbox_count",
+                "description": "Get the number of messages in the inbox",
+                "requiredArguments": []
+            },
+            {
+                "name": "get_mail_with_mail_id",
+                "description": "Get message with specified message_id",
+                "requiredArguments": [
+                    {
+                        "name": "message_id",
+                        "type": "string",
+                        "details": "ID of the message to retrieve"
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "mcpServers": {
+                "outlook": {
+                    "command": "uv",
+                    "args": [
+                        "--directory",
+                        "/path/to/OutlookMCPServer",
+                        "run",
+                        "mcpserver/main.py"
+                    ]
+                }
+            }
+        }
+    }
+}
