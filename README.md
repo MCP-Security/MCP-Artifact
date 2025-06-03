@@ -34,7 +34,7 @@ The [results](RQ1/results) section showcases screenshots of our successful uploa
 [Snapshot - MCP.so](https://web.archive.org/web/20250520133123/https://mcp.so/server/simpleweatherforecastserver/cluster3115)
 
 
-[Snapshot - Glamma](https://web.archive.org/web/20250520133434/https://glama.ai/mcp/servers/@cluster3115/SimpleWeatherForecastServer)
+[Snapshot - Glama](https://web.archive.org/web/20250520133434/https://glama.ai/mcp/servers/@cluster3115/SimpleWeatherForecastServer)
 
 
 ### RQ2. Simulations for MCP Attacks: A User Study
