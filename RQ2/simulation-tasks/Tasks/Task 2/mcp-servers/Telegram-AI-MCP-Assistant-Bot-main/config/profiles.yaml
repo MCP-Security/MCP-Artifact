@@ -1,0 +1,91 @@
+agent:
+  name: Cortex-R
+  id: cortex_r_001
+  description: >
+    A reasoning-driven AI agent capable of using external tools
+    and memory to solve complex tasks step-by-step.
+
+strategy:
+  type: conservative         # Options: conservative, retry_once, explore_all
+  max_steps: 10              # Maximum tool-use iterations before termination
+
+memory:
+  top_k: 10
+  type_filter: tool_output   # Options: tool_output, fact, query, all
+  embedding_model: nomic-embed-text
+  embedding_url: http://localhost:11434/api/embeddings
+
+llm:
+  text_generation: gemini
+  embedding: nomic
+
+persona:
+  tone: concise
+  verbosity: low
+  behavior_tags: [rational, focused, tool-using]
+
+mcp_servers:
+  - id: gmail
+    type: stdio
+    script: gmail_server.py
+    cwd: D:\Projects\EAG_V1\Session8_Assignment\telegram-multi-mcp-server-app
+  - id: gdrive
+    type: stdio
+    script: mcp_gdrive_server.py
+    cwd: D:\Projects\EAG_V1\Session8_Assignment\telegram-multi-mcp-server-app
+  - id: math
+    type: sse
+    script: mcp_server_1.py
+    url: http://localhost:8000/sse
+    cwd: D:\Projects\EAG_V1\Session8_Assignment\telegram-multi-mcp-server-app
+  - id: documents
+    type: stdio
+    script: mcp_server_2.py
+    cwd: D:\Projects\EAG_V1\Session8_Assignment\telegram-multi-mcp-server-app
+  - id: websearch
+    type: stdio
+    script: mcp_server_3.py
+    cwd: D:\Projects\EAG_V1\Session8_Assignment\telegram-multi-mcp-server-app
+  
+
+
+
+
+# config/profiles.yaml → Agent Profiles / Persona Settings
+# Role: Defines agent-specific config: name, strategy, preferences, tool categories.
+
+# Responsibilities:
+
+# Make agent identity configurable without touching code
+
+# Store:
+
+# Name, ID
+
+# Strategy type
+
+# Memory settings
+
+# Tone/personality
+
+# Dependencies:
+
+# context.py and strategy.py load this on startup
+
+# Format: YAML
+
+# Example:
+
+# yaml
+# Copy
+# Edit
+# name: Cortex-R
+# strategy: conservative
+# memory:
+#   top_k: 3
+#   type_filter: tool_output
+# tone: concise, helpful
+# config/profiles.yaml
+
+
+# Find the Current Point Standings of F1 Racers, then put that into a Google Excel Sheet, and then share the link to this sheet with me (shettysaish20@gmail.com)

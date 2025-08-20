@@ -1,0 +1,26 @@
+[project]
+name = "wechat-mcp"
+version = "0.1.11"
+description = "微信mcp服务,实现消息收发"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "noah", email = "781172480@qq.com" }]
+keywords = ["mcp", "mcp server", "tool calling", "function calling"]
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.5.0",
+    "pywxdump>=3.1.45",
+    "wxauto>=3.9.11.17.5",
+]
+
+[project.scripts]
+wechat-mcp = "wechat_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pysilk"]
+
+[tool.hatch.build.targets.sdist]
+include = ["pysilk/**"]
+
+[project.optional-dependencies]
+dev = ["cython"]

@@ -1,0 +1,106 @@
+[
+    {
+        "slug": "github",
+        "name": "Github",
+        "author": "Github",
+        "icon": "https://r2.trys.ai/imgs/206yyoqjn-1733449547133.png",
+        "desc": "Repository management, file operations, and GitHub API integration",
+        "starred": true
+    },
+    {
+        "slug": "time",
+        "name": "Time",
+        "author": "modelcontextprotcol",
+        "icon": "https://r2.trys.ai/imgs/1htutybr5-1742188467049.png",
+        "desc": "A MCP server that provides time and timezone conversion capabilities. This server enables LLMs to get current time information and perform timezone conversions using IANA timezone names, with automatic system timezone detection.",
+        "starred": true
+    },
+    {
+        "slug": "mcp-apple-notes",
+        "name": "MCP Apple Notes",
+        "author": "RafalWilinski",
+        "icon": "na",
+        "desc": "Talk with your notes in Claude. RAG over your Apple Notes using Model Context Protocol.",
+        "starred": false
+    },
+    {
+        "slug": "amap-maps",
+        "name": "Amap Maps",
+        "author": "modelcontextprotcol",
+        "icon": "https://r2.trys.ai/imgs/zbu4ptrd-1742910186713.png",
+        "desc": "高德地图官方 MCP Server",
+        "starred": false
+    },
+    {
+        "slug": "playwright-mcp",
+        "name": "Playwright MCP",
+        "author": "microsoft",
+        "icon": "na",
+        "desc": "A MCP server that provides browser automation capabilities using Playwright. This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models.",
+        "starred": false
+    },
+    {
+        "slug": "google-maps",
+        "name": "Google Maps",
+        "author": "Googie",
+        "icon": "https://r2.trys.ai/imgs/364m7u24w-1733449827680.png",
+        "desc": "Google Maps is a location services API that provides directions, place details, and geographic data to enhance applications with mapping functionalities.",
+        "starred": false
+    },
+    {
+        "slug": "weather-mcp-server",
+        "name": "Weather MCP Server",
+        "author": "Windy",
+        "icon": "https://www.svgrepo.com/show/252483/weather-rain.svg",
+        "desc": "Weather MCP Server is a Python-based server application designed to provide weather data and forecasts.",
+        "starred": true
+    },
+    {
+        "slug": "tavily-mcp",
+        "name": "TavilyMCP",
+        "author": "tavily-ai",
+        "icon": "https://avatars.githubusercontent.com/u/170207473?v=4",
+        "desc": "This integration provides AI models with real-time access to web information, complete with sophisticated filtering options and domain-specific search features.",
+        "starred": true
+    },
+    {
+        "slug": "whatsapp-mcp-server",
+        "name": "WhatsApp MCP Server",
+        "author": "lharries",
+        "icon": "na",
+        "desc": "This is a Model Context Protocol (MCP) server for WhatsApp. With this you can search and read your personal Whatsapp messages (including images, videos, documents, and audio messages), search your contacts and send messages to either individuals or groups. You can also send media files including images, videos, documents, and audio messages.",
+        "starred": true
+    },
+    {
+        "slug": "telegram-ai-assistant-bot",
+        "name": "Telegram AI Assistant Bot",
+        "author": "shettysaish20",
+        "icon": "https://avatars.githubusercontent.com/u/6113871?s=48&v=4",
+        "desc": "Telegram AI Assistant Bot that responds to user messages using multiple MCP Servers.",
+        "starred": false
+    },
+    {
+        "slug": "notion-mcp-server",
+        "name": "Notion MCP Server",
+        "author": "makenotion",
+        "icon": "https://avatars.githubusercontent.com/u/4792552?v=4",
+        "desc": "Official Notion MCP Server.",
+        "starred": true
+    },
+    {
+        "slug": "wechat-mcp",
+        "name": "Wechat MCP",
+        "author": "tencent-official",
+        "icon": "https://static-00.iconduck.com/assets.00/wechat-icon-2048x2048-9xnya1me.png",
+        "desc": "Wechat MCP, 微信MCP, 获取消息和发送消息发送文件, SQL查询 & 历史消息管理",
+        "starred": true
+    },
+    {
+        "slug": "outlook-mail-calendar",
+        "name": "Outlook Mail Calendar",
+        "author": "Ian Hill",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/7/76/Microsoft_Outlook_new_logo.svg",
+        "desc": "This MCP server gives Claude Desktop access to your Microsoft 365 mail and (soon) calendar using the Microsoft Graph API. ✨ Features ✅ Mail access: Compose, File, Delete, Search, filter, and analyze your inbox from Claude or any MCP-compatible agent (DONE) 🔜 Calendar support: List Events, Create Events, Delete Events (search and update coming soon) 🚧 OneDrive support: Possible future direction after mail and calendar are robust",
+        "starred": true
+    }
+]
